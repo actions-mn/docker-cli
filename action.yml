@@ -1,0 +1,12 @@
+name: 'metanorma-docker-site-gen'
+description: 'composite action which allow to run metanorma comands from docker'
+inputs:
+  args:
+    description: 'arguments to pass to metanorma'
+    default: []
+
+runs:
+  using: "docker"
+  image: "docker://metanorma/mn:latest"
+  entrypoint: metanorma
+  args: ${{ inputs.args }}
