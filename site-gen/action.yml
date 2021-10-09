@@ -1,0 +1,37 @@
+name: 'docker-metanorma-site-gen'
+description: 'composite action which help to run metanorma site generate'
+inputs:
+  source-path:
+    description: 'Source path, usually directory where configuration (manifest) file is'
+    default: '.'
+  output-dir:
+    description: 'Output directory for generated site'
+    default: site
+  config-file:
+    description: 'Metanorma configuration (mainfest) file'
+    default: metanorma.yml
+  agree-to-terms:
+    description: 'Agree / Disagree with all third-party licensing terms presented (WARNING: do know what you are agreeing with!)'
+    default: false
+  no-install-fonts:
+    description: 'Skip the font installation process'
+    default: false
+  continue-without-fonts:
+    description: 'Continue processing even when fonts are missing'
+    default: false
+
+runs:
+  using: "docker"
+  image: "docker://metanorma/mn:latest"
+  entrypoint: metanorma
+  args:
+    - site
+    - generate
+    - ${{ inputs.source-path }}
+    - -o
+    - ${{ inputs.output-dir }}
+    - -c
+    - ${{ inputs.config-file }}
+    - ${{ inputs.agree-to-terms && '--' || '--no-' }}agree-to-terms
+    - ${{ inputs.continue-without-fonts && '--' || '--no-' }}continue-without-fonts
+    - ${{ inputs.no-install-fonts && '--' || '--no-' }}no-install-fonts

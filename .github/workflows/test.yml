@@ -12,19 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: ./
-      with:
-        args: help
-
-    - uses: ./
-      with:
-        args: version
-
     - uses: actions/checkout@v2
       with:
         repository: metanorma/mn-samples-iso
         path: iso
 
-    - uses: ./
+    - uses: site-gen/
       with:
-        args: site generate iso --agree-to-terms
+        source-path: iso
