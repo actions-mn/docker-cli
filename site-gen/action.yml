@@ -12,13 +12,13 @@ inputs:
     default: metanorma.yml
   agree-to-terms:
     description: 'Agree / Disagree with all third-party licensing terms presented (WARNING: do know what you are agreeing with!)'
-    default: false
-  no-install-fonts:
+    default: '' # false
+  install-fonts:
     description: 'Skip the font installation process'
-    default: false
+    default: 'true'
   continue-without-fonts:
     description: 'Continue processing even when fonts are missing'
-    default: false
+    default: '' # false
 
 runs:
   using: "docker"
@@ -34,4 +34,4 @@ runs:
     - ${{ inputs.config-file }}
     - ${{ inputs.agree-to-terms && '--' || '--no-' }}agree-to-terms
     - ${{ inputs.continue-without-fonts && '--' || '--no-' }}continue-without-fonts
-    - ${{ inputs.no-install-fonts && '--' || '--no-' }}no-install-fonts
+    - ${{ inputs.install-fonts &&  '--no-' || '--' }}no-install-fonts
