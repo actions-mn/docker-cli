@@ -9,4 +9,5 @@ runs:
   using: "docker"
   image: "docker://metanorma/mn:latest"
   entrypoint: metanorma
-  args: ${{ inputs.args }}
+  args:
+    - ${{ inputs.args }}
