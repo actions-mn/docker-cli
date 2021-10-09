@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: basic metanorma tests
+    name: Metanorma tests
     steps:
     - uses: actions/checkout@v2
 
@@ -19,3 +19,13 @@ jobs:
     - uses: ./
       with:
         args: version
+
+    - uses: actions/checkout@v2
+      with:
+        repository: metanorma/mn-samples-iso
+        path: iso
+
+    - uses: ./
+      working-directory: iso
+      with:
+        args: site generate --agree-to-terms
