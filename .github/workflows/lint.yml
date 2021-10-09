@@ -14,4 +14,4 @@ jobs:
 
     - run: |
         sudo apt-get install yamllint
-        yamllint **/*
+        yamllint actions.yml .github/workflows/*.yml
