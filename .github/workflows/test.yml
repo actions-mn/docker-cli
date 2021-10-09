@@ -17,6 +17,6 @@ jobs:
         repository: metanorma/mn-samples-iso
         path: iso
 
-    - uses: site-gen/
+    - uses: ./site-gen/
       with:
         source-path: iso
