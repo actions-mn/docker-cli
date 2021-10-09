@@ -24,7 +24,7 @@ jobs:
     - uses: ./site-gen/
       with:
         source-path: iso
-        config-file: iso/manifest.yml
+        config-file: iso/metanorma.yml
         agree-to-terms: true
 
     - run: |
