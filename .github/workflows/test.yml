@@ -20,3 +20,8 @@ jobs:
     - uses: ./site-gen/
       with:
         source-path: iso
+        config-file: iso/manifest.yml
+        agree-to-terms: true
+
+    - run: |
+        [ ! -d "site" ] && echo "Directory site DOES NOT exists." && exit 1
