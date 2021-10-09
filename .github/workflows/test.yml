@@ -26,6 +26,5 @@ jobs:
         path: iso
 
     - uses: ./
-      working-directory: iso
       with:
-        args: site generate --agree-to-terms
+        args: site generate iso --agree-to-terms
