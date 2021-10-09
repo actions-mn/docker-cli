@@ -14,8 +14,8 @@ jobs:
 
     - uses: ./
       with:
-        args: [ help ]
+        args: help
 
     - uses: ./
       with:
-        args: [ version ]
+        args: version
